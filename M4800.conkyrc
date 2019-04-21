@@ -74,8 +74,8 @@ lua_load ~/.conky/functions.lua
 
 
 TEXT
-#${lua tex_bg {0,0,0,80,28,"/home/nous/.conky/artix.png"}}
-${lua luaimage {90,5,80,28,"/home/nous/.conky/artix.png"}}
+#${lua tex_bg {0,0,0,80,28,"/home/nouskas/.conky/artix.png"}}
+${lua luaimage {90,5,80,28,"/home/nouskas/.conky/artix.png"}}
 #${lua tex_bg {20,0,400,260,130,"/home/mcdowall/Pictures/steel.png"}}${lua tex_bg {20,0,535,260,190,"/home/mcdowall/Pictures/steel.png"}}
 #${font Sans:size=14}${color2}Artix Linux${font}
 ${font Sans:bold:size=9}${color4}SYSTEM  ${color3}${hr 2}
@@ -95,7 +95,7 @@ ${voffset -6}${font}${color1}CPU5 ${color4}${alignr 107}${if_match ${cpu cpu5}<4
 ${voffset -6}${font}${color1}CPU6 ${color4}${alignr 107}${if_match ${cpu cpu6}<40}${color2}${else}${if_match ${cpu cpu6}>90}${color8}${endif}${endif}${cpu cpu6}% ${lua gradbar {86,252,"${cpu cpu6}",100,35,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color2}${freq_g 6}${color1}GHz
 ${voffset -6}${font}${color1}CPU7 ${color4}${alignr 107}${if_match ${cpu cpu7}<40}${color2}${else}${if_match ${cpu cpu7}>90}${color8}${endif}${endif}${cpu cpu7}% ${lua gradbar {86,268,"${cpu cpu7}",100,35,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color2}${freq_g 7}${color1}GHz
 ${voffset -6}${font}${color1}CPU8 ${color4}${alignr 107}${if_match ${cpu cpu8}<40}${color2}${else}${if_match ${cpu cpu8}>90}${color8}${endif}${endif}${cpu cpu8}% ${lua gradbar {86,284,"${cpu cpu8}",100,35,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color2}${freq_g 8}${color1}GHz
-${color2}CPU fan: ${color4}${if_match ${i8k_right_fan_rpm}<1000}${color5}${else}${if_match ${i8k_right_fan_rpm}>3000}${color8}${endif}${endif}${i8k_right_fan_rpm} RPM ${lua gradbar {135,307,"${i8k_right_fan_rpm}",3500,39,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
+${color2}CPU fan: ${color4}${if_match ${i8k_right_fan_rpm}<1000}${color5}${else}${if_match ${i8k_right_fan_rpm}>3000}${color8}${endif}${endif}${i8k_right_fan_rpm} RPM ${lua gradbar {144,307,"${i8k_right_fan_rpm}",3500,36,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
 ${voffset 4}${font Sans:bold:size=9}${color4}MEMORY  ${color3}${hr 2}
 ${font}${voffset -4}${color2}${mem} / ${memmax}${alignr}${color4}${if_match ${memperc}<30}${color5}${else}${if_match ${memperc}>80}${color8}${endif}${endif}${memperc}% Used
 ${lua gradbar {0,366,"${memperc}",100,85,2,12,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
@@ -127,7 +127,7 @@ ${font}${color1}Total down: ${color7}${totaldown wlan0}${alignr}${color1}Total u
 ${voffset 1}${font Sans:bold:size=9}${color4}GPU  ${color3}${hr 2}
 ${font}${color2}Intel GPU ${lua gradbar {85,721,"${hwmon 1 temp 3}",90,44,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color5}${if_match ${hwmon 1 temp 3}>55}${color4}${endif}${hwmon 1 temp 3}°C
 ${voffset -6}${font}${color2}NV Quadro ${lua gradbar {85,737,"${hwmon 3 temp 1}",90,44,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color5}${if_match ${hwmon 3 temp 1}>55}${color4}${endif}${hwmon 3 temp 1}°C
-${color2}GPU fan: ${color4}${if_match ${i8k_left_fan_rpm}<1000}${color5}${else}${if_match ${i8k_left_fan_rpm}>3000}${color8}${endif}${endif}${i8k_left_fan_rpm} RPM ${lua gradbar {135,760,"${i8k_left_fan_rpm}",3500,39,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
+${color2}GPU fan: ${color4}${if_match ${i8k_left_fan_rpm}<1000}${color5}${else}${if_match ${i8k_left_fan_rpm}>3000}${color8}${endif}${endif}${i8k_left_fan_rpm} RPM ${lua gradbar {144,760,"${i8k_left_fan_rpm}",3500,36,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
 ${font Sans:bold:size=9}${color4}DISKS  ${color3}${hr 2}
 ${font}${voffset -3}${color2} /    ${color4}${fs_used /} /${color5}${fs_size /}${alignr}${color5}${if_match ${fs_free_perc /}<25}${color4}${endif}${fs_free_perc /}% Free
 ${voffset -3}${lua gradbar {0,815,"${fs_used_perc /}",100,85,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
