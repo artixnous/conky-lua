@@ -102,11 +102,11 @@ ${voffset -4}${font2}${color1}CPU5 ${alignr 101}${color4}${if_match ${cpu cpu5}<
 ${voffset -4}${font2}${color1}CPU6 ${alignr 101}${color4}${if_match ${cpu cpu6}<40}${color2}${else}${if_match ${cpu cpu6}>90}${color8}${endif}${endif}${cpu cpu6}% ${lua gradbar {86,279,"${cpu cpu6}",100,34,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 6}<2}${color2}${else}${if_match ${freq_g 6}>3}${color8}${endif}${endif}${freq_g 6}${color1}GHz
 ${voffset -4}${font2}${color1}CPU7 ${alignr 101}${color4}${if_match ${cpu cpu7}<40}${color2}${else}${if_match ${cpu cpu7}>90}${color8}${endif}${endif}${cpu cpu7}% ${lua gradbar {86,293,"${cpu cpu7}",100,34,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 7}<2}${color2}${else}${if_match ${freq_g 7}>3}${color8}${endif}${endif}${freq_g 7}${color1}GHz
 ${voffset -4}${font2}${color1}CPU8 ${alignr 101}${color4}${if_match ${cpu cpu8}<40}${color2}${else}${if_match ${cpu cpu8}>90}${color8}${endif}${endif}${cpu cpu8}% ${lua gradbar {86,307,"${cpu cpu8}",100,34,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 8}<2}${color2}${else}${if_match ${freq_g 8}>3}${color8}${endif}${endif}${freq_g 8}${color1}GHz
-${color2}CPU fan: ${color4}${if_match ${i8k_right_fan_rpm}<1000}${color5}${else}${if_match ${i8k_right_fan_rpm}>3000}${color8}${endif}${endif}${i8k_right_fan_rpm} RPM ${lua gradbar {164,325,"${i8k_right_fan_rpm}",4000,36,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
+${color2}CPU fan: ${color4}${if_match ${i8k_right_fan_rpm}<1000}${color5}${else}${if_match ${i8k_right_fan_rpm}>3000}${color8}${endif}${endif}${i8k_right_fan_rpm} RPM ${lua gradbar {164,325,"${i8k_right_fan_rpm}",4000,29,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
 ${font1}${color2}System load:${font2}${color4}${if_match ${loadavg 1}<2}${color5}${else}${if_match ${loadavg 1}>6}${color8}${endif}${endif} ${loadavg 1}${color1}/${color4}${if_match ${loadavg 2}<2}${color5}${else}${if_match ${loadavg 2}>6}${color8}${endif}${endif}${loadavg 2}${color1}/${color4}${if_match ${loadavg 3}<2}${color5}${else}${if_match ${loadavg 3}>6}${color8}${endif}${endif}${loadavg 3}
 ${voffset 2}${font3}${color4}MEMORY  ${color3}${hr 2}
 ${font2}${voffset -4}${color4}${if_match ${memperc}<30}${color5}${else}${if_match ${memperc}>80}${color8}${endif}${endif}${memwithbuffers} ${color1}/ ${color2}${memmax}${alignr}${color4}${if_match ${memperc}<30}${color5}${else}${if_match ${memperc}>80}${color8}${endif}${endif}${memperc}% used
-${lua gradbar {4,404,"${memperc}",100,83,2,12,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
+${lua gradbar {4,404,"${memperc}",100,82,2,12,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
 ${font3}${color4}PROCESSES  ${color3}${hr 2}
 ${font1}${color1}All:${color5}${processes} ${color1}${alignc}   Running:${color5}${running_processes}${alignr}${color1} Threads:${color5}${running_threads}
 ${voffset -4}${font1}${color4}${goto 43}RAM ${goto 175}${color4}CPU %
@@ -127,12 +127,10 @@ ${font1}${color1}Total down: ${color7}${totaldown wlan0}${alignr}${color1}Total 
 ${voffset 1}${font3}${color4}GPU  ${color3}${hr 2}
 ${font1}${color1}Intel GPU ${lua gradbar {85,746,"${hwmon 1 temp 3}",90,44,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color5}${if_match ${hwmon 1 temp 3}>55}${color4}${endif}${hwmon 1 temp 3}°C
 ${voffset -6}${color1}NV Quadro ${lua gradbar {85,763,"${hwmon 3 temp 1}",90,44,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color5}${if_match ${hwmon 3 temp 1}>55}${color4}${endif}${hwmon 3 temp 1}°C
-${font2}${color2}GPU fan: ${color4}${if_match ${i8k_left_fan_rpm}<1000}${color5}${else}${if_match ${i8k_left_fan_rpm}>3000}${color8}${endif}${endif}${i8k_left_fan_rpm} RPM ${lua gradbar {164,785,"${i8k_left_fan_rpm}",4000,36,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
+${font2}${color2}GPU fan: ${color4}${if_match ${i8k_left_fan_rpm}<1000}${color5}${else}${if_match ${i8k_left_fan_rpm}>3000}${color8}${endif}${endif}${i8k_left_fan_rpm} RPM ${lua gradbar {164,785,"${i8k_left_fan_rpm}",4000,29,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
 ${font3}${color4}DISKS  ${color3}${hr 2}
 ${font2}${voffset -3}${color2}/${color4} ${fs_used /}${color1} /${color5}${fs_size /} ${color1}${fs_type /}${alignr}${color5}${if_match ${fs_free_perc /}<25}${color4}${endif}${fs_free_perc /}% free
-${voffset -3}${lua gradbar {4,840,"${fs_used_perc /}",100,83,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
-#${font StyleBats:size=10}${color1}x${font2}${color2} HOME${goto 95}${fs_used /home}${goto 125}/ ${fs_size /home}${alignr}${fs_free_perc /home}% free
-#${lua gradbar {10,460,"${fs_used_perc /home}",100,80,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
+${voffset -3}${lua gradbar {4,840,"${fs_used_perc /}",100,82,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
 ${font3}${color4}SENSORS  ${color3}${hr 2}${font1}
 ${voffset -4}${color1}SSD temp: ${goto 90}${color5}${if_match ${hddtemp /dev/sda}>45}${color4}${endif}${font2}${hddtemp /dev/sda}°C
 ${voffset -4}${color1}RAM temp: ${goto 90}${color5}${if_match ${hwmon 1 temp 4}>45}${color4}${endif}${font2}${hwmon 1 temp 4}°C
