@@ -1,0 +1,142 @@
+background yes
+use_xft yes
+#xftfont sans:size=9
+xftfont Liberation Mono:size=9
+font1 Liberation:size=9
+font2 Liberation Mono:size=9
+font3 Liberation:bold:size=9
+font4 Liberation Mono:bold:size=9
+font5 Liberation:bold:size=10
+font6 Liberation Mono:bold:size=10
+font7 Liberation:size=8
+xftalpha 1
+total_run_times 0
+own_window yes
+own_window_transparent no
+own_window_argb_visual yes
+own_window_argb_value 100
+#own_window_argb_value 0
+own_window_colour 000000
+own_window_type dock
+#own_window_class override
+own_window_title conky
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+#minimum_height 1000
+maximum_width 250
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color white
+default_shade_color black
+default_outline_color white
+alignment top_right
+gap_x 0
+gap_y 0
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale yes
+text_buffer_size 8192
+top_name_width 9
+top_cpu_separate false
+update_interval 1
+use_spacer left
+pad_percents 1
+short_units
+
+## Colors
+color1 Grey	#7E7E7E
+color2 Ivory	#FFFFF0
+color3 DarkGrey
+color4 Orange	#FFA54F
+color5 Green
+color6 Yellow
+color7 Cyan
+color8 ff3333
+color9 53bbdb
+
+## Set the path to your script here.
+lua_load ~/.conky/functions.lua
+## lua funcions
+## background ##################################################################
+#${lua draw_bg {corner_radius,x_position,y_position,width,height,color,alpha}}
+#note for background: set width=0 - width will be conky window width, set height=0 - height will be conky window height
+## gradient bars ###############################################################
+#${lua gradbar {x_position,y_position,"conky_object",object_max_value,number_of_divisions,division_width,division_height,division_gap,bg_color,bg_alpha,start_color,start_alpha,mid_color,mid_alpha,end_color,end_alpha}}
+## calendar ###############################################################
+#${lua luacal {x_position,y_position,"title_font",title_fontsize,title_color,title_alpha,"dates_font",dates_fontsize,dates_color,dates_alpha,"highlight_font",highlight_fontsize,highlight_color,highlight_alpha,"spacer",colum_gap,title_gap,row_gap,start_day}
+#note for calendar: start day... 0=sunday, 1=monday ... "spacer" can help align calendar with non fix width fonts
+## textured background ###############################################################
+#${lua tex_bg {corner_radius,x_position,y_position,width,height,"/path/to/texture.png"}}
+## lua draw images ###############################################################
+#${lua luaimage {x_position,y_position,width,height,"/path/to/image"}}
+#note for images: set width=0 - width will be image width, set height=0 - height will be image height
+## lua draw text ###############################################################
+#${lua luatext {x_position,y_position,color,alpha,"font",fontsize,"justify"}}
+# not for text: justify can be "r" = right, "c" = center, "l" = left
+
+#${lua draw_bg {10,0,0,0,0,0x000000,0.3}}
+
+TEXT
+#${lua tex_bg {0,0,0,80,28,"/home/nouskas/.conky/artix.png"}}
+${color9}${font5}${voffset 5}${goto 40}${no_update ${nodename}}${lua luaimage {130,8,80,28,"/home/nouskas/.conky/artix.png"}}
+#${lua tex_bg {20,0,400,260,130,"/home/mcdowall/Pictures/steel.png"}}${lua tex_bg {20,0,535,260,190,"/home/mcdowall/Pictures/steel.png"}}
+#${font Liberation Mono:size=14}${color2}Artix Linux${font2}
+${voffset 0}${font3}${color4}SYSTEM  ${color3}${hr 2}
+${voffset -2}${font3}${color7}${alignc}Dell Precision M4800${font1}
+${voffset -4}${alignc}${color2}i7-4810MQ / 3.8GHz
+${voffset -4}${alignc}NVidia Quadro K2100M
+${voffset -4}${no_update ${sysname} ${kernel} ${machine}}
+${voffset -4}${color2}Uptime: ${color4}${uptime_short}
+#${font StyleBats:size=10}${color1}o${voffset -1}${font2}${color2} File System${alignr}${fs_type}
+${voffset -2}${font3}${color4}CPU  ${color3}${hr 2}
+${voffset -3}${font2}${color2}Temp${color4}${if_match ${hwmon 4 temp 1}<60}${color5}${else}${if_match ${hwmon 4 temp 1}>80}${color8}${endif}${endif}${hwmon 4 temp 1}°C${lua gradbar {90,172,"${hwmon 4 temp 1}",93,54,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
+${color2}CPU  ${alignr 101}${color4}${if_match ${cpu cpu0}<40}${color2}${else}${if_match ${cpu cpu0}>90}${color8}${endif}${endif}${cpu cpu0}% ${lua gradbar {86,188,"${cpu cpu0}",100,34,2,14,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 0}<2}${color2}${else}${if_match ${freq_g 0}>3}${color8}${endif}${endif}${freq_g 0}${color1}GHz
+${voffset  0}${font2}${color1}CPU1 ${alignr 101}${color4}${if_match ${cpu cpu1}<40}${color2}${else}${if_match ${cpu cpu1}>90}${color8}${endif}${endif}${cpu cpu1}% ${lua gradbar {86,209,"${cpu cpu1}",100,34,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 1}<2}${color2}${else}${if_match ${freq_g 1}>3}${color8}${endif}${endif}${freq_g 1}${color1}GHz
+${voffset -4}${font2}${color1}CPU2 ${alignr 101}${color4}${if_match ${cpu cpu2}<40}${color2}${else}${if_match ${cpu cpu2}>90}${color8}${endif}${endif}${cpu cpu2}% ${lua gradbar {86,223,"${cpu cpu2}",100,34,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 2}<2}${color2}${else}${if_match ${freq_g 2}>3}${color8}${endif}${endif}${freq_g 2}${color1}GHz
+${voffset -4}${font2}${color1}CPU3 ${alignr 101}${color4}${if_match ${cpu cpu3}<40}${color2}${else}${if_match ${cpu cpu3}>90}${color8}${endif}${endif}${cpu cpu3}% ${lua gradbar {86,237,"${cpu cpu3}",100,34,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 3}<2}${color2}${else}${if_match ${freq_g 3}>3}${color8}${endif}${endif}${freq_g 3}${color1}GHz
+${voffset -4}${font2}${color1}CPU4 ${alignr 101}${color4}${if_match ${cpu cpu4}<40}${color2}${else}${if_match ${cpu cpu4}>90}${color8}${endif}${endif}${cpu cpu4}% ${lua gradbar {86,251,"${cpu cpu4}",100,34,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 4}<2}${color2}${else}${if_match ${freq_g 4}>3}${color8}${endif}${endif}${freq_g 4}${color1}GHz
+${voffset -4}${font2}${color1}CPU5 ${alignr 101}${color4}${if_match ${cpu cpu5}<40}${color2}${else}${if_match ${cpu cpu5}>90}${color8}${endif}${endif}${cpu cpu5}% ${lua gradbar {86,265,"${cpu cpu5}",100,34,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 5}<2}${color2}${else}${if_match ${freq_g 5}>3}${color8}${endif}${endif}${freq_g 5}${color1}GHz
+${voffset -4}${font2}${color1}CPU6 ${alignr 101}${color4}${if_match ${cpu cpu6}<40}${color2}${else}${if_match ${cpu cpu6}>90}${color8}${endif}${endif}${cpu cpu6}% ${lua gradbar {86,279,"${cpu cpu6}",100,34,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 6}<2}${color2}${else}${if_match ${freq_g 6}>3}${color8}${endif}${endif}${freq_g 6}${color1}GHz
+${voffset -4}${font2}${color1}CPU7 ${alignr 101}${color4}${if_match ${cpu cpu7}<40}${color2}${else}${if_match ${cpu cpu7}>90}${color8}${endif}${endif}${cpu cpu7}% ${lua gradbar {86,293,"${cpu cpu7}",100,34,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 7}<2}${color2}${else}${if_match ${freq_g 7}>3}${color8}${endif}${endif}${freq_g 7}${color1}GHz
+${voffset -4}${font2}${color1}CPU8 ${alignr 101}${color4}${if_match ${cpu cpu8}<40}${color2}${else}${if_match ${cpu cpu8}>90}${color8}${endif}${endif}${cpu cpu8}% ${lua gradbar {86,307,"${cpu cpu8}",100,34,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color4}${if_match ${freq_g 8}<2}${color2}${else}${if_match ${freq_g 8}>3}${color8}${endif}${endif}${freq_g 8}${color1}GHz
+${color2}CPU fan: ${color4}${if_match ${i8k_right_fan_rpm}<1000}${color5}${else}${if_match ${i8k_right_fan_rpm}>3000}${color8}${endif}${endif}${i8k_right_fan_rpm} RPM ${lua gradbar {164,325,"${i8k_right_fan_rpm}",4000,29,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
+${font1}${color2}System load:${font2}${color4}${if_match ${loadavg 1}<2}${color5}${else}${if_match ${loadavg 1}>6}${color8}${endif}${endif} ${loadavg 1}${color1}/${color4}${if_match ${loadavg 2}<2}${color5}${else}${if_match ${loadavg 2}>6}${color8}${endif}${endif}${loadavg 2}${color1}/${color4}${if_match ${loadavg 3}<2}${color5}${else}${if_match ${loadavg 3}>6}${color8}${endif}${endif}${loadavg 3}
+${voffset 2}${font3}${color4}MEMORY  ${color3}${hr 2}
+${font2}${voffset -4}${color4}${if_match ${memperc}<30}${color5}${else}${if_match ${memperc}>80}${color8}${endif}${endif}${memwithbuffers} ${color1}/ ${color2}${memmax}${alignr}${color4}${if_match ${memperc}<30}${color5}${else}${if_match ${memperc}>80}${color8}${endif}${endif}${memperc}% used
+${lua gradbar {4,404,"${memperc}",100,82,2,12,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
+${font3}${color4}PROCESSES  ${color3}${hr 2}
+${font1}${color1}All:${color5}${processes} ${color1}${alignc}   Running:${color5}${running_processes}${alignr}${color1} Threads:${color5}${running_threads}
+${voffset -4}${font1}${color4}${goto 43}RAM ${goto 175}${color4}CPU %
+${font7}${voffset -8}${color #ff0000}${top_mem name 1}${goto 85}${top_mem mem_res 1} ${goto 140}${top name 1}${goto 215}${top cpu 1}
+${voffset -6}${color #f66d00}${top_mem name 2}${goto 85}${top_mem mem_res 2} ${goto 140}${top name 2}${goto 215}${top cpu 2}
+${voffset -6}${color #d8a600}${top_mem name 3}${goto 85}${top_mem mem_res 3} ${goto 140}${top name 3}${goto 215}${top cpu 3}
+${voffset -6}${color #a4d600}${top_mem name 4}${goto 85}${top_mem mem_res 4} ${goto 140}${top name 4}${goto 215}${top cpu 4}
+${voffset -6}${color #2ddd00}${top_mem name 5}${goto 85}${top_mem mem_res 5} ${goto 140}${top name 5}${goto 215}${top cpu 5}
+${voffset -6}${color #009900}${top_mem name 6}${goto 85}${top_mem mem_res 6} ${goto 140}${top name 6}${goto 215}${top cpu 6}
+${voffset 1}${font3}${color4}NETWORK  ${color3}${hr 2}
+${voffset -2}${font1}${color1}Public IP: ${goto 80}${color2}${font2}${execi 1800 curl ifconfig.me}
+${voffset -8}${font1}${color1}Private IP: ${goto 80}${font2}${color2}${addr wlan0}
+${font1}${color1}Bitrate: ${color5}${wireless_bitrate wlan0} ${goto 160}${color1}Channel:${alignr}${color5}${wireless_channel wlan0}
+${voffset -8}${color1}${font1}ESSID: ${color5}${wireless_essid wlan0}${goto 166}${color1}Quality:${goto 212}${color5}${if_match ${wireless_link_qual_perc wlan0}<75}${color4}${endif}${wireless_link_qual_perc wlan0}%
+${color7}${font2}Down ${goto 50}${downspeed wlan0}${goto 100}${downspeedgraph wlan0 15,150}
+${color4}${font2}Up ${goto 50}${upspeed wlan0}${goto 100}${upspeedgraph wlan0 15,150}
+${font1}${color1}Total down: ${color7}${totaldown wlan0}${alignr}${color1}Total up: ${color4}${totalup wlan0}
+${voffset 1}${font3}${color4}GPU  ${color3}${hr 2}
+${font1}${color1}Intel GPU ${lua gradbar {85,746,"${hwmon 3 temp 1}",90,44,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color5}${if_match ${hwmon 3 temp 1}>55}${color4}${endif}${hwmon 3 temp 1}°C
+${voffset -6}${color1}NV Quadro ${lua gradbar {85,763,"${hwmon 3 temp 1}",90,44,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}${alignr}${color5}${if_match ${hwmon 3 temp 1}>55}${color4}${endif}${hwmon 3 temp 2}°C
+${font2}${color2}GPU fan: ${color4}${if_match ${i8k_left_fan_rpm}<1000}${color5}${else}${if_match ${i8k_left_fan_rpm}>3000}${color8}${endif}${endif}${i8k_left_fan_rpm} RPM ${lua gradbar {164,785,"${i8k_left_fan_rpm}",4000,29,2,8,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
+${font3}${color4}DISKS  ${color3}${hr 2}
+${font2}${voffset -3}${color2}/${color4} ${fs_used /}${color1} /${color5}${fs_size /} ${color1}${fs_type /}${alignr}${color5}${if_match ${fs_free_perc /}<25}${color4}${endif}${fs_free_perc /}% free
+${voffset -3}${lua gradbar {4,840,"${fs_used_perc /}",100,82,2,10,1,0xFFFFFF,0.25,0x00FF00,1,0xFFFF00,1,0xFF0000,1}}
+${font3}${color4}SENSORS  ${color3}${hr 2}${font1}
+${voffset -4}${color1}SSD1 temp: ${goto 90}${color5}${if_match ${hddtemp /dev/sda}>45}${color4}${endif}${font2}${hddtemp /dev/sda}°C
+${voffset -4}${color1}SSD2 temp: ${goto 90}${color5}${if_match ${hddtemp /dev/sdb}>45}${color4}${endif}${font2}${hddtemp /dev/sdb}°C
+${voffset -4}${color1}RAM temp: ${goto 90}${color5}${if_match ${hwmon 4 temp 4}>45}${color4}${endif}${font2}${hwmon 4 temp 4}°C
+${voffset -4}${color1}Chassis 1: ${goto 90}${color5}${if_match ${hwmon 4 temp 3}>45}${color4}${endif}${font2}${hwmon 4 temp 3}°C
+${voffset -4}${color1}Chassis 2: ${goto 90}${color5}${if_match ${hwmon 4 temp 2}>45}${color4}${endif}${font2}${hwmon 4 temp 2}°C
+${voffset -4}${color1}ACPI temp: ${goto 90}${color5}${if_match ${acpitemp}>45}${color4}${endif}${font2}${acpitemp}°C
+${voffset -4}${color1}CPU fan: ${goto 100}${color4}${if_match ${i8k_right_fan_rpm}<1000}${color5}${else}${if_match ${i8k_right_fan_rpm}>3000}${color8}${endif}${endif}${font2}${i8k_right_fan_rpm} RPM
+${voffset -4}${color1}GPU fan: ${goto 100}${color4}${if_match ${i8k_left_fan_rpm}<1000}${color5}${else}${if_match ${i8k_left_fan_rpm}>3000}${color8}${endif}${endif}${font2}${i8k_left_fan_rpm} RPM
